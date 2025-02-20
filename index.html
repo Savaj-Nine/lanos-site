@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chevrolet Lanos - Король Пиздеца</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Impact', sans-serif;
+            background: linear-gradient(to bottom, #0D0D0D, #1A1A1A);
+            color: #E6E6E6;
+            overflow-x: hidden;
+            position: relative;
+        }
+        /* Шапка */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            padding: 20px 0;
+            text-align: center;
+            z-index: 20;
+            box-shadow: 0 0 15px #FF3333;
+            animation: pulseGlow 2s infinite;
+        }
+        header h1 {
+            font-size: 3.5em;
+            color: #FF3333;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
+            margin: 0;
+            letter-spacing: 3px;
+        }
+        /* Главная секция */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 20px 20px;
+            position: relative;
+            background: url('https://via.placeholder.com/1920x1080/1A1A1A/0D0D0D?text=Rust') no-repeat center/cover;
+            border-bottom: 5px solid #FF3333;
+        }
+        .hero h1 {
+            font-size: 6em;
+            color: #FF3333;
+            text-shadow: 6px 6px 12px rgba(0, 0, 0, 0.9);
+            animation: shake 0.5s infinite;
+        }
+        .hero p {
+            font-size: 2.2em;
+            max-width: 1000px;
+            line-height: 1.4;
+            color: #B3B3B3;
+            text-shadow: 2px 2px 4px #000;
+        }
+        .product {
+            width: 500px;
+            margin: 50px 0;
+            filter: drop-shadow(0 0 30px rgba(255, 51, 51, 0.8));
+            transition: transform 0.4s ease, filter 0.3s ease;
+            border: 4px dashed #FF3333;
+            border-radius: 8px;
+        }
+        .product:hover {
+            transform: rotate(-5deg) scale(1.25);
+            filter: drop-shadow(0 0 40px rgba(255, 51, 51, 1));
+        }
+        .btn {
+            padding: 25px 60px;
+            font-size: 2em;
+            text-transform: uppercase;
+            background: #FF3333;
+            color: #0D0D0D;
+            border: 5px solid #FF3333;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px #FF3333;
+        }
+        .btn:hover {
+            background: transparent;
+            color: #FF3333;
+            transform: scale(1.2);
+            box-shadow: 0 0 25px #FF3333;
+        }
+        /* Секция особенностей */
+        .features {
+            padding: 100px 20px;
+            background: radial-gradient(circle, #222, #0D0D0D);
+            text-align: center;
+            position: relative;
+        }
+        .features h2 {
+            font-size: 4.5em;
+            color: #FF3333;
+            text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.9);
+            margin-bottom: 50px;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .feature {
+            padding: 40px;
+            background: #1A1A1A;
+            border: 4px dashed #FF3333;
+            border-radius: 15px;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+        .feature:hover {
+            transform: translateY(-20px);
+            background: #2A2A2A;
+        }
+        .feature p {
+            font-size: 1.8em;
+            color: #B3B3B3;
+            text-shadow: 1px 1px 3px #000;
+        }
+        /* Таймер поломки */
+        .breakdown {
+            padding: 80px 20px;
+            background: linear-gradient(to right, #0D0D0D, #333);
+            text-align: center;
+            color: #FF3333;
+            position: relative;
+        }
+        .breakdown h2 {
+            font-size: 3.5em;
+            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.9);
+        }
+        #timer {
+            font-size: 3em;
+            color: #B3B3B3;
+            margin-top: 30px;
+            text-shadow: 2px 2px 4px #000;
+        }
+        /* Секция отзывов */
+        .reviews {
+            padding: 100px 20px;
+            background: url('https://via.placeholder.com/1920x1080/333/0D0D0D?text=Crash') no-repeat center/cover;
+            text-align: center;
+            color: #E6E6E6;
+        }
+        .reviews h2 {
+            font-size: 4em;
+            color: #FF3333;
+            text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.9);
+            margin-bottom: 50px;
+        }
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .review {
+            padding: 30px;
+            background: rgba(255, 51, 51, 0.1);
+            border: 3px solid #FF3333;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        .review:hover {
+            transform: scale(1.05);
+        }
+        .review p {
+            font-size: 1.6em;
+            color: #B3B3B3;
+        }
+        /* Фоновая чернуха */
+        .bg-text {
+            position: absolute;
+            font-size: 16em;
+            color: rgba(255, 51, 51, 0.06);
+            text-transform: uppercase;
+            z-index: 0;
+            pointer-events: none;
+        }
+        #bg1 { top: 5%; left: 2%; transform: rotate(-20deg); }
+        #bg2 { bottom: 15%; right: 2%; transform: rotate(15deg); }
+        #bg3 { top: 50%; left: 5%; transform: rotate(-10deg); }
+        .skull {
+            position: absolute;
+            width: 250px;
+            opacity: 0.3;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            filter: drop-shadow(0 0 15px #FF3333);
+            z-index: 5;
+        }
+        .skull:hover {
+            opacity: 0.7;
+            transform: scale(1.4) rotate(15deg);
+        }
+        #skull1 { top: 15%; left: 5%; }
+        #skull2 { bottom: 25%; right: 5%; }
+        #skull3 { top: 70%; left: 8%; }
+        #skull4 { bottom: 40%; right: 10%; }
+        #skull5 { top: 30%; left: 70%; }
+        /* Футер */
+        footer {
+            padding: 60px 20px;
+            background: #1A1A1A;
+            text-align: center;
+            font-size: 1.8em;
+            color: #B3B3B3;
+            border-top: 6px dashed #FF3333;
+            position: relative;
+        }
+        footer::before {
+            content: '☠ Ланос живёт в аду ☠';
+            font-size: 1.5em;
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #FF3333;
+            text-shadow: 2px 2px 4px #000;
+        }
+        /* Анимации */
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-7px); }
+            50% { transform: translateX(7px); }
+            75% { transform: translateX(-7px); }
+            100% { transform: translateX(0); }
+        }
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 15px #FF3333; }
+            50% { box-shadow: 0 0 30px #FF3333; }
+            100% { box-shadow: 0 0 15px #FF3333; }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 1.2s ease-out forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <h1>Chevrolet Lanos</h1>
+    </header>
+
+    <!-- Главная секция -->
+    <div class="bg-text" id="bg1">Lanos Shit</div>
+    <div class="bg-text" id="bg2">Drive or Die</div>
+    <div class="bg-text" id="bg3">Fuck Comfort</div>
+    <!-- SVG Черепа вместо изображений -->
+    <svg class="skull" id="skull1" viewBox="0 0 100 100">
+        <circle cx="50" cy="40" r="30" fill="none" stroke="#FF3333" stroke-width="5"/>
+        <circle cx="40" cy="35" r="5" fill="#FF3333"/>
+        <circle cx="60" cy="35" r="5" fill="#FF3333"/>
+        <rect x="45" y="50" width="10" height="10" fill="#FF3333"/>
+        <path d="M40 65 Q50 75 60 65" fill="none" stroke="#FF3333" stroke-width="5"/>
+    </svg>
+    <svg class="skull" id="skull2" viewBox="0 0 100 100">
+        <circle cx="50" cy="40" r="30" fill="none" stroke="#FF3333" stroke-width="5"/>
+        <circle cx="40" cy="35" r="5" fill="#FF3333"/>
+        <circle cx="60" cy="35" r="5" fill="#FF3333"/>
+        <rect x="45" y="50" width="10" height="10" fill="#FF3333"/>
+        <path d="M40 65 Q50 75 60 65" fill="none" stroke="#FF3333" stroke-width="5"/>
+    </svg>
+    <svg class="skull" id="skull3" viewBox="0 0 100 100">
+        <circle cx="50" cy="40" r="30" fill="none" stroke="#FF3333" stroke-width="5"/>
+        <circle cx="40" cy="35" r="5" fill="#FF3333"/>
+        <circle cx="60" cy="35" r="5" fill="#FF3333"/>
+        <rect x="45" y="50" width="10" height="10" fill="#FF3333"/>
+        <path d="M40 65 Q50 75 60 65" fill="none" stroke="#FF3333" stroke-width="5"/>
+    </svg>
+    <svg class="skull" id="skull4" viewBox="0 0 100 100">
+        <circle cx="50" cy="40" r="30" fill="none" stroke="#FF3333" stroke-width="5"/>
+        <circle cx="40" cy="35" r="5" fill="#FF3333"/>
+        <circle cx="60" cy="35" r="5" fill="#FF3333"/>
+        <rect x="45" y="50" width="10" height="10" fill="#FF3333"/>
+        <path d="M40 65 Q50 75 60 65" fill="none" stroke="#FF3333" stroke-width="5"/>
+    </svg>
+    <svg class="skull" id="skull5" viewBox="0 0 100 100">
+        <circle cx="50" cy="40" r="30" fill="none" stroke="#FF3333" stroke-width="5"/>
+        <circle cx="40" cy="35" r="5" fill="#FF3333"/>
+        <circle cx="60" cy="35" r="5" fill="#FF3333"/>
+        <rect x="45" y="50" width="10" height="10" fill="#FF3333"/>
+        <path d="M40 65 Q50 75 60 65" fill="none" stroke="#FF3333" stroke-width="5"/>
+    </svg>
+    <section class="hero">
+        <h1 class="fade-in">Король Пиздеца</h1>
+        <p class="fade-in" style="animation-delay: 0.3s;">Тачка, от которой даже бомжи в шоке. Гремит как пиздец, воняет как свалка, ломается каждый метр. Бери, если хочешь себе могилу на колёсах, мудила.</p>
+        <img src="lanos.jpg" alt="Chevrolet Lanos" class="product fade-in" style="animation-delay: 0.6s;">
+        <button class="btn fade-in" onclick="fuckYeah()" style="animation-delay: 0.9s;">Бери, ёбаный кринж</button>
+    </section>
+
+    <!-- Секция особенностей -->
+    <section class="features">
+        <h2 class="fade-in">Почему этот хлам достоин только мема?</h2>
+        <div class="feature-grid">
+            <div class="feature fade-in" style="animation-delay: 0.2s;">
+                <p>Двигло воет, как твой батя после пятой рюмки. Соседи в экстазе, сука.</p>
+            </div>
+            <div class="feature fade-in" style="animation-delay: 0.4s;">
+                <p>Ржавчина жрёт кузов так быстро, что ты успеешь только пернуть.</p>
+            </div>
+            <div class="feature fade-in" style="animation-delay: 0.6s;">
+                <p>Салон — это помойка, где крысы срут, а ты сидишь и нюхаешь.</p>
+            </div>
+            <div class="feature fade-in" style="animation-delay: 0.8s;">
+                <p>Тормоза? Это просто педаль для понта, тормози жопой, дебил.</p>
+            </div>
+            <div class="feature fade-in" style="animation-delay: 1s;">
+                <p>Цена — как шаурма у вокзала. Вкус говна тот же, зато дёшево.</p>
+            </div>
+            <div class="feature fade-in" style="animation-delay: 1.2s;">
+                <p>Фары светят так, будто ты с фонариком от Nokia 3310 едешь.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Таймер поломки -->
+    <section class="breakdown fade-in">
+        <h2>До следующего пиздеца твоей жизни:</h2>
+        <div id="timer">00:00:00</div>
+    </section>
+
+    <!-- Секция отзывов -->
+    <section class="reviews">
+        <h2 class="fade-in">Владельцы Ланоса пишут из ада</h2>
+        <div class="review-grid">
+            <div class="review fade-in" style="animation-delay: 0.2s;">
+                <p>"Купил Ланос, теперь сплю в гараже, потому что дома стыдно показаться."</p>
+            </div>
+            <div class="review fade-in" style="animation-delay: 0.4s;">
+                <p>"Еду 40 км/ч, а ощущение, что пиздец уже рядом. Шедевр, мать его."</p>
+            </div>
+            <div class="review fade-in" style="animation-delay: 0.6s;">
+                <p>"Руль скрипит так, что я думал, это призрак прошлого хозяина орёт."</p>
+            </div>
+            <div class="review fade-in" style="animation-delay: 0.8s;">
+                <p>"Глохнет на каждом светофоре. Я теперь молюсь на красный, сука."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="fade-in">
+        <p>Chevrolet Lanos — тачка для тех, кто хочет сдохнуть со смеху или от стыда. © 2025, пиздец на века.</p>
+    </footer>
+
+    <script>
+        // Кнопка с кринжем
+        function fuckYeah() {
+            const btn = document.querySelector('.btn');
+            btn.style.backgroundColor = '#FF3333';
+            btn.innerText = 'Ты реально это берёшь?!';
+            const audio = new Audio('https://www.myinstants.com/media/sounds/car-crash.mp3');
+            audio.play();
+            setTimeout(() => {
+                btn.style.backgroundColor = 'transparent';
+                btn.innerText = 'Бери, ёбаный кринж';
+                alert('Ну всё, пиздец тебе, теперь ты официально в клубе Ланосного стыда!');
+            }, 500);
+        }
+
+        // Параллакс
+        document.addEventListener('mousemove', (e) => {
+            const product = document.querySelector('.product');
+            const skulls = document.querySelectorAll('.skull');
+            const x = (e.clientX - window.innerWidth / 2) / 25;
+            const y = (e.clientY - window.innerHeight / 2) / 25;
+            product.style.transform = `rotate(${y / 2}deg) translate(${x}px, ${y}px)`;
+            skulls.forEach((skull, i) => {
+                skull.style.transform = `translate(${x / (i + 1)}px, ${y / (i + 1)}px)`;
+            });
+        });
+
+        // Таймер
+        let timeLeft = 1800; // 30 минут в секундах
+        const timer = document.getElementById('timer');
+        setInterval(() => {
+            const hours = Math.floor(timeLeft / 3600);
+            const minutes = Math.floor((timeLeft % 3600) / 60);
+            const seconds = timeLeft % 60;
+            timer.innerText = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            timeLeft--;
+            if (timeLeft < 0) {
+                timeLeft = 1800;
+                const audio = new Audio('https://www.myinstants.com/media/sounds/car-crash.mp3');
+                audio.play();
+                alert('Время вышло! Ланос опять сдох, поздравляю, мудак!');
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
