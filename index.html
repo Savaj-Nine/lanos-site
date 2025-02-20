@@ -20,14 +20,14 @@
             top: 0;
             width: 100%;
             background: rgba(0, 0, 0, 0.95);
-            padding: 20px 0;
+            padding: 15px 0;
             text-align: center;
             z-index: 20;
             box-shadow: 0 0 15px #FF3333;
             animation: pulseGlow 2s infinite;
         }
         header h1 {
-            font-size: 3.5em;
+            font-size: clamp(2em, 5vw, 3.5em); /* Адаптивный размер */
             color: #FF3333;
             text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
             margin: 0;
@@ -41,27 +41,27 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 120px 20px 20px;
+            padding: 100px 10px 20px;
             position: relative;
             background: url('https://via.placeholder.com/1920x1080/1A1A1A/0D0D0D?text=Rust') no-repeat center/cover;
             border-bottom: 5px solid #FF3333;
         }
         .hero h1 {
-            font-size: 6em;
+            font-size: clamp(2.5em, 10vw, 6em);
             color: #FF3333;
             text-shadow: 6px 6px 12px rgba(0, 0, 0, 0.9);
             animation: shake 0.5s infinite;
         }
         .hero p {
-            font-size: 2.2em;
-            max-width: 1000px;
+            font-size: clamp(1.2em, 4vw, 2.2em);
+            max-width: 90%;
             line-height: 1.4;
             color: #B3B3B3;
             text-shadow: 2px 2px 4px #000;
         }
         .product {
-            width: 500px;
-            margin: 50px 0;
+            width: clamp(300px, 80vw, 500px);
+            margin: 30px 0;
             filter: drop-shadow(0 0 30px rgba(255, 51, 51, 0.8));
             transition: transform 0.4s ease, filter 0.3s ease;
             border: 4px dashed #FF3333;
@@ -72,8 +72,8 @@
             filter: drop-shadow(0 0 40px rgba(255, 51, 51, 1));
         }
         .btn {
-            padding: 25px 60px;
-            font-size: 2em;
+            padding: clamp(15px, 3vw, 25px) clamp(30px, 5vw, 60px);
+            font-size: clamp(1.2em, 3vw, 2em);
             text-transform: uppercase;
             background: #FF3333;
             color: #0D0D0D;
@@ -90,26 +90,26 @@
         }
         /* Секция особенностей */
         .features {
-            padding: 100px 20px;
+            padding: clamp(50px, 10vw, 100px) 10px;
             background: radial-gradient(circle, #222, #0D0D0D);
             text-align: center;
             position: relative;
         }
         .features h2 {
-            font-size: 4.5em;
+            font-size: clamp(2em, 8vw, 4.5em);
             color: #FF3333;
             text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.9);
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
         .feature-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
             max-width: 1400px;
             margin: 0 auto;
         }
         .feature {
-            padding: 40px;
+            padding: 20px;
             background: #1A1A1A;
             border: 4px dashed #FF3333;
             border-radius: 15px;
@@ -120,50 +120,50 @@
             background: #2A2A2A;
         }
         .feature p {
-            font-size: 1.8em;
+            font-size: clamp(1em, 3vw, 1.8em);
             color: #B3B3B3;
             text-shadow: 1px 1px 3px #000;
         }
         /* Таймер поломки */
         .breakdown {
-            padding: 80px 20px;
+            padding: clamp(40px, 8vw, 80px) 10px;
             background: linear-gradient(to right, #0D0D0D, #333);
             text-align: center;
             color: #FF3333;
             position: relative;
         }
         .breakdown h2 {
-            font-size: 3.5em;
+            font-size: clamp(1.8em, 6vw, 3.5em);
             text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.9);
         }
         #timer {
-            font-size: 3em;
+            font-size: clamp(1.5em, 5vw, 3em);
             color: #B3B3B3;
-            margin-top: 30px;
+            margin-top: 20px;
             text-shadow: 2px 2px 4px #000;
         }
         /* Секция отзывов */
         .reviews {
-            padding: 100px 20px;
+            padding: clamp(50px, 10vw, 100px) 10px;
             background: url('https://via.placeholder.com/1920x1080/333/0D0D0D?text=Crash') no-repeat center/cover;
             text-align: center;
             color: #E6E6E6;
         }
         .reviews h2 {
-            font-size: 4em;
+            font-size: clamp(2em, 7vw, 4em);
             color: #FF3333;
             text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.9);
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
         .review-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
             max-width: 1400px;
             margin: 0 auto;
         }
         .review {
-            padding: 30px;
+            padding: 20px;
             background: rgba(255, 51, 51, 0.1);
             border: 3px solid #FF3333;
             border-radius: 10px;
@@ -173,13 +173,13 @@
             transform: scale(1.05);
         }
         .review p {
-            font-size: 1.6em;
+            font-size: clamp(1em, 3vw, 1.6em);
             color: #B3B3B3;
         }
         /* Фоновая чернуха */
         .bg-text {
             position: absolute;
-            font-size: 16em;
+            font-size: clamp(8em, 20vw, 16em);
             color: rgba(255, 51, 51, 0.06);
             text-transform: uppercase;
             z-index: 0;
@@ -190,7 +190,7 @@
         #bg3 { top: 50%; left: 5%; transform: rotate(-10deg); }
         .skull {
             position: absolute;
-            width: 250px;
+            width: clamp(150px, 25vw, 250px);
             opacity: 0.3;
             transition: opacity 0.5s ease, transform 0.5s ease;
             filter: drop-shadow(0 0 15px #FF3333);
@@ -207,17 +207,17 @@
         #skull5 { top: 30%; left: 70%; }
         /* Футер */
         footer {
-            padding: 60px 20px;
+            padding: clamp(30px, 6vw, 60px) 10px;
             background: #1A1A1A;
             text-align: center;
-            font-size: 1.8em;
+            font-size: clamp(1em, 3vw, 1.8em);
             color: #B3B3B3;
             border-top: 6px dashed #FF3333;
             position: relative;
         }
         footer::before {
             content: '☠ Ланос живёт в аду ☠';
-            font-size: 1.5em;
+            font-size: clamp(1em, 2.5vw, 1.5em);
             position: absolute;
             top: -40px;
             left: 50%;
@@ -245,6 +245,23 @@
         .fade-in {
             animation: fadeIn 1.2s ease-out forwards;
         }
+        /* Медиа-запросы для телефонов */
+        @media (max-width: 768px) {
+            .hero { padding: 80px 5px 10px; }
+            .feature-grid, .review-grid { grid-template-columns: 1fr; gap: 15px; }
+            .feature, .review { padding: 15px; }
+            .btn { padding: 15px 30px; }
+            .skull { width: clamp(100px, 20vw, 150px); }
+            .bg-text { font-size: clamp(5em, 15vw, 10em); }
+        }
+        @media (max-width: 480px) {
+            header { padding: 10px 0; }
+            .hero { padding: 60px 5px 10px; }
+            .product { width: clamp(200px, 70vw, 300px); }
+            .btn { padding: 10px 20px; }
+            .features, .reviews, .breakdown { padding: 30px 5px; }
+            .skull { width: clamp(80px, 15vw, 100px); }
+        }
     </style>
 </head>
 <body>
@@ -257,7 +274,6 @@
     <div class="bg-text" id="bg1">Lanos Shit</div>
     <div class="bg-text" id="bg2">Drive or Die</div>
     <div class="bg-text" id="bg3">Fuck Comfort</div>
-    <!-- SVG Черепа вместо изображений -->
     <svg class="skull" id="skull1" viewBox="0 0 100 100">
         <circle cx="50" cy="40" r="30" fill="none" stroke="#FF3333" stroke-width="5"/>
         <circle cx="40" cy="35" r="5" fill="#FF3333"/>
@@ -356,7 +372,6 @@
     </footer>
 
     <script>
-        // Кнопка с кринжем
         function fuckYeah() {
             const btn = document.querySelector('.btn');
             btn.style.backgroundColor = '#FF3333';
@@ -370,7 +385,6 @@
             }, 500);
         }
 
-        // Параллакс
         document.addEventListener('mousemove', (e) => {
             const product = document.querySelector('.product');
             const skulls = document.querySelectorAll('.skull');
@@ -382,8 +396,7 @@
             });
         });
 
-        // Таймер
-        let timeLeft = 1800; // 30 минут в секундах
+        let timeLeft = 1800;
         const timer = document.getElementById('timer');
         setInterval(() => {
             const hours = Math.floor(timeLeft / 3600);
